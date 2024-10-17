@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option go_package = "v1/user;v1_user";
+
+service User {
+  rpc Create (CreateUserRequest) returns (CreateUserResponse);
+  rpc Get (google.protobuf.Empty) returns (GetUserResponse);
+  rpc Delete (DeleteUserRequest) returns (google.protobuf.Empty);
+}
+
+message CreateUserRequest {
+  string name = 1;
+  int64  age  = 2;
+}
+
+message CreateUserResponse {
+  int64 id = 1;
+}
+
+message GetUserResponse {
+  int64 id = 1;
+}
+
+message DeleteUserRequest {
+  int64 id = 1;
+}
